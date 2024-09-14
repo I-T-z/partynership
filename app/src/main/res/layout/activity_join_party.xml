@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <include
+        layout="@layout/toolbar_main"
+        android:id="@+id/toolbar" />
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/create_party"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/create_party"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:font="@font/pretendard_bold"
+        android:text="파티 관리"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/back_button"
+        app:layout_constraintStart_toEndOf="@id/back_button"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <!--칸 나누는 줄-->
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_button" />
+
+    <!--new_party에서 입력받은 제목을 띄워주는 TextView-->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:font="@font/pretendard_bold"
+        android:text="제목"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+    <!--칸 나누는 줄-->
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/smallmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2">
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/baseline_account_circle_24"
+            app:layout_constraintBottom_toBottomOf="@+id/smallmenu"
+            app:layout_constraintHorizontal_bias="0.02"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <TextView
+            android:id="@+id/list_subText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:font="@font/pretendard_bold"
+            android:text="닉네임"
+            android:textColor="@color/title"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/smallmenu"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintLeft_toRightOf="@+id/imgProfile"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <TextView
+            android:id="@+id/linetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="방장 승인"
+            android:textColor="@color/title"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/smallmenu"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintLeft_toRightOf="@+id/imgProfile"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/list_subText"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <Button
+            android:id="@+id/ableBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button_rounded_available"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="모집 완료"
+            android:textColor="@color/primary"
+            android:textSize="16dp"
+            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/list_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/box_background"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_margin="15dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/smallmenu">
+
+        <TextView
+            android:id="@+id/list_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:font="@font/pretendard_bold"
+            android:paddingLeft="20dp"
+            android:text="파티 멤버 >"
+            android:textColor="@color/title"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/profile_pictures_layout"/>
+
+
+        <!-- 프로필 사진을 담는 레이아웃 -->
+        <LinearLayout
+            android:id="@+id/profile_pictures_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/list_text">
+
+            <!-- 사용자 프로필 사진 (최대 5개) -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_1"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_account_circle_24" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_2"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_account_circle_24" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_3"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_account_circle_24" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_4"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_account_circle_24" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_5"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_account_circle_24" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_pictures_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

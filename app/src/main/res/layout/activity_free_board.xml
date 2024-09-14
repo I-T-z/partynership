@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FreeBoardActivity">
+
+    <include
+        layout="@layout/toolbar_main"
+        android:id="@+id/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/relate_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        <!--
+        android:imeOptions="actionSearch"
+        키보드에 액션 추가 -> 키보드에 서치 버튼 넣을 때
+        -->
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_rounded_corner_white"
+            android:padding="8dp" />
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="320dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/search" />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/floating_btnBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relate_layout">
+
+        <Button
+            android:id="@+id/FreeBoard"
+            android:backgroundTint="@color/primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="자유게시판" />
+
+        <Button
+            android:id="@+id/PartyBoard"
+            android:backgroundTint="@color/primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="파티게시판" />
+
+        <Button
+            android:id="@+id/MentorBoard"
+            android:backgroundTint="@color/primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="멘토멘티게시판" />
+
+    </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linear_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/floating_btnBar">
+
+
+        <Button
+            android:id="@+id/writing_btn"
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:background="@drawable/button_rounded_available"
+            android:text="글쓰기"
+            android:textColor="@color/primary"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#CCCCCC"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/writing_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <ListView
+        android:id="@+id/free_boardlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_bar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

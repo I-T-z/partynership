@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".Post">
+
+    <include
+        layout="@layout/toolbar_main"
+        android:id="@+id/toolbar" />
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@null"
+        android:src="@drawable/back"
+        android:scaleType="centerCrop"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/create_party"/>
+
+    <TextView
+        android:id="@+id/create_party"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:font="@font/pretendard_bold"
+        android:text="파티 모집글"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toEndOf="@id/back_button"
+        app:layout_constraintBottom_toBottomOf="@id/back_button"/>
+
+    <!--칸 나누는 줄-->
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!--new_party에서 입력받은 제목을 띄워주는 TextView-->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        android:text="의리있는분들 모집해요"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/divider1"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <!--칸 나누는 줄-->
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!-- 게시물 작성과 링크 입력 포함하는 레이아웃 -->
+    <LinearLayout
+        android:id="@+id/content_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/divider2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 입력된 파티글을 TextView로 보여줌 -->
+        <TextView
+            android:id="@+id/content_text"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textSize="15sp"
+            android:text="파티글 내용"
+            android:padding="12dp"
+            android:gravity="top"/>
+
+        <!-- 입력된 링크를 보여줌 -->
+        <TextView
+            android:id="@+id/link_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:textSize="15sp"
+            android:text="링크"
+            android:layout_weight="1"
+            android:background="@drawable/link_background"/>
+    </LinearLayout>
+
+    <!-- 태그 그룹 -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:singleLine="false"
+        app:chipSpacing="8dp"
+        app:layout_constraintTop_toBottomOf="@id/content_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 태그 -->
+        <com.google.android.material.chip.Chip
+            app:chipBackgroundColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#실버"/>
+
+        <com.google.android.material.chip.Chip
+            app:chipBackgroundColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#골드"/>
+
+        <com.google.android.material.chip.Chip
+            app:chipBackgroundColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#자랭"/>
+
+        <com.google.android.material.chip.Chip
+            app:chipBackgroundColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#즐겜"/>
+    </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:id="@+id/apply_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:font="@font/pretendard_bold"
+        android:textSize="20sp"
+        android:text="신청하기"
+        android:textColor="@android:color/white"
+        android:background="@color/primary"
+        app:layout_constraintTop_toBottomOf="@id/chip_group"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 멤버 박스 -->
+    <LinearLayout
+        android:id="@+id/members_box"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/box_background"
+        app:layout_constraintTop_toBottomOf="@id/apply_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp">
+
+        <!-- 멤버 텍스트 -->
+        <TextView
+            android:id="@+id/members_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:font="@font/pretendard_bold"
+            android:text="멤버>"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- 프로필 사진을 담는 레이아웃 -->
+        <LinearLayout
+            android:id="@+id/profile_pictures_layout"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- 사용자 프로필 사진 (최대 5개) -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/baseline_account_circle_24"
+                android:scaleType="centerCrop"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/baseline_account_circle_24"
+                android:scaleType="centerCrop"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/baseline_account_circle_24"
+                android:scaleType="centerCrop"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/baseline_account_circle_24"
+                android:scaleType="centerCrop"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic_5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/baseline_account_circle_24"
+                android:scaleType="centerCrop"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

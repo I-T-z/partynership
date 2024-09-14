@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.Partynership"
+        tools:targetApi="34">
+        <activity android:name=".MentorActivity"/>
+        <activity android:name=".PartyActivity" />
+        <activity android:name=".FreeBoardActivity" />
+        <activity android:name=".NewPostMenti"/>
+        <activity android:name=".NewPostFree"/>
+        <activity android:name=".NewPostParty"/>
+        <activity android:name=".MyPageTag"/>
+        <activity android:name=".MyPageBoard"/>
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".Post"/>
+        <activity android:name=".PostMentor"/>
+        <activity android:name=".PostParty"/>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

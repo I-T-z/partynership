@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="?attr/actionBarSize">
+
+    <!--    <com.google.android.material.appbar.AppBarLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <androidx.appcompat.widget.Toolbar-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            app:menu="@menu/top_nav_menu" />-->
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+
+    <!--    <androidx.appcompat.widget.Toolbar-->
+    <!--        android:background="@color/main"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:menu="@menu/top_nav_menu"/>-->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:padding="20dp"
+        android:text="커뮤니티"
+        android:fontFamily="@font/pretendard_extrabold"
+        android:textColor="@color/primary"
+        android:textSize="40sp" />
+
+    <!--edit text 이쁘게 하는법 찾아보기
+        -> xml에 정의하고 background속성 주기
+    -->
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <!--
+        android:imeOptions="actionSearch"
+        키보드에 액션 추가 -> 키보드에 서치 버튼 넣을 때
+        -->
+        <EditText
+            android:id="@+id/search_edt_main"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_rounded_corner_rectangle"
+            android:padding="8dp" />
+
+        <ImageButton
+            android:id="@+id/serch_btn_main"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="320dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/search" />
+    </RelativeLayout>
+
+    <!--자바에서 이미지, 이름 넣기-->
+    <GridView
+        android:padding="20dp"
+        android:id="@+id/select_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:numColumns="3" />
+
+
+</LinearLayout>
