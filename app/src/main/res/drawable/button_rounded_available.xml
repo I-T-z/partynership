@@ -3,6 +3,6 @@
     <solid android:color="@android:color/transparent" />
     <stroke
         android:width="2dp"
-        android:color="@color/primary" />
+        android:color="@color/ic_launcher_background" />
     <corners android:radius="50dp" />
 </shape>

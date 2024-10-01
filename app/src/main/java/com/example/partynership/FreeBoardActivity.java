@@ -20,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FreeBoardActivity extends AppCompatActivity {
     private ListView freeboardlist;
     private List<com.example.partynership.FreeListItem> fList;

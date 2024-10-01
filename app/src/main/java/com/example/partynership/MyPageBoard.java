@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MyPageBoard extends AppCompatActivity {
     Toolbar toolbar;
     ImageButton backbtn;

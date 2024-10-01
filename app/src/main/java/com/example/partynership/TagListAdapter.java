@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
 public class TagListAdapter extends BaseAdapter {
     ArrayList<TagListItem> items = new ArrayList<>();
     Context context;

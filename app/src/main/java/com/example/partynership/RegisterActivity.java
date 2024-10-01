@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class RegisterActivity extends AppCompatActivity {
     private ArrayAdapter adapter;
     private Spinner spinner;

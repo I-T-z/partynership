@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 
+
 public class NewPostFree extends AppCompatActivity {
     Button resbtn;
     Toolbar toolbar;

@@ -2,6 +2,7 @@ package com.example.partynership;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 GridItem selectedItem = gList.get(position);
                 // TODO: 선택된 아이템에 따라 다른 액티비티로 이동
-
+                Log.d("test", "onItemClick: 왜 안넘어감?");
                 Intent intent = new Intent(MainActivity.this, FreeBoardActivity.class);
-                //intent.putExtra("item_name", );
                 startActivity(intent);
             }
         });

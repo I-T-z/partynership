@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 
+
 public class NewPostMenti extends AppCompatActivity {
 
     private Spinner spinner1, spinner2;

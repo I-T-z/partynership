@@ -79,9 +79,9 @@
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
             android:orientation="horizontal"
             app:chipSpacing="8dp"
-            android:layout_marginLeft="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/imgProfile"
             app:layout_constraintRight_toRightOf="parent"
@@ -93,35 +93,39 @@
                 android:text="#실버"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
+
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#골드"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
+
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#자랭"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
+
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#즐겜"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
+
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#보이스O"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
 
         </com.google.android.material.chip.ChipGroup>
 

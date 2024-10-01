@@ -10,6 +10,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
 public class JoinParty extends AppCompatActivity {
     ListView listView;
     JoinListAdapter adapter;

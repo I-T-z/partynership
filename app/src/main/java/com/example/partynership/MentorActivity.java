@@ -22,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MentorActivity extends AppCompatActivity {
     ArrayList<String> arrayList1;
     ArrayAdapter<String> arrayAdapter1;
