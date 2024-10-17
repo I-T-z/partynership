@@ -28,6 +28,7 @@ public class JoinParty extends AppCompatActivity {
         adapter.addItem(new JoinListItem("크앙 놀랐징", "010-0000-0000","하이이이이"));
         adapter.addItem(new JoinListItem("소시지간첩", "010-0000-0000","메로오옹ㅇ"));
         listView.setAdapter(adapter);
+
     }@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

@@ -111,6 +111,7 @@ public class FreeBoardActivity extends AppCompatActivity {
                 Log.d("mytest","게시글 선택");
             }
         });
+
     }
 
     private List<FreeListItem> generateItemsList() {
