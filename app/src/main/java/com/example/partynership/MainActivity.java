@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 GridItem selectedItem = gList.get(position);
                 // TODO: 선택된 아이템에 따라 다른 액티비티로 이동
-                Log.d("test", "onItemClick: 왜 안넘어감?");
-                Intent intent = new Intent(MainActivity.this, FreeBoardActivity.class);
+                Intent intent = new Intent(MainActivity.this, MBoardActivity.class);
                 startActivity(intent);
             }
         });

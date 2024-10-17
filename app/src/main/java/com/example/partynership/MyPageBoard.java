@@ -1,5 +1,6 @@
 package com.example.partynership;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,10 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +25,16 @@ import java.util.List;
 
 public class MyPageBoard extends AppCompatActivity {
     Toolbar toolbar;
-    ImageButton backbtn;
-    Button board, tag;
+    ImageButton backbtn,setbtn;
     private ListView myBoardlist;
     MyBoardListAdapter mAdapter;
     private List<MyBoardListItem> mList;
 
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager;
+    private VPAdapter vpAdapter;
+
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +44,20 @@ public class MyPageBoard extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         backbtn = findViewById(R.id.back_button);
-        board = findViewById(R.id.board);
-        tag = findViewById(R.id.tag);
+        tabLayout = findViewById(R.id.TapLayout);
+        setbtn = findViewById(R.id.setting_button);
 
+        viewPager = findViewById(R.id.ViewPager2);
+
+        vpAdapter = new VPAdapter(this);
+        vpAdapter.addFragment(new MyFragment1(), "게시물");
+        vpAdapter.addFragment(new MyFragment2(), "후기");
+        viewPager.setAdapter(vpAdapter);
+
+        // TabLayout과 ViewPager2 연결
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            tab.setText(vpAdapter.getPageTitle(position));
+        }).attach();
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,41 +66,15 @@ public class MyPageBoard extends AppCompatActivity {
             }
         });
 
-        board.setOnClickListener(new View.OnClickListener() {
+        setbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-            }
-        });
-        tag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MyPageBoard.this, MyPageTag.class);
+                Intent intent = new Intent(MyPageBoard.this, SettingActivity.class);
                 startActivity(intent);
             }
         });
-        //TODO: 커스텀 리스트 뷰
-        // ListView참조 붙일 xml 명시
-        myBoardlist = findViewById(R.id.my_list);
-        mList = generateItemsList();
-        //어댑터 생성
-        mAdapter = new MyBoardListAdapter(this, mList);
-
-        // 어댑터 설정
-        myBoardlist.setAdapter(mAdapter);
-
-        // 데이터 변경 알림
-        mAdapter.notifyDataSetChanged();
-        //얘는 문제가 없음
 
     }
-    private List<MyBoardListItem> generateItemsList() {
-        List<MyBoardListItem> mList = new ArrayList<>();
-        mList.add(new MyBoardListItem("자랑", "가챠성공", "뭉가", "33","2024-01-29", "00:01:23","222"));
-
-        return mList;
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -98,6 +92,9 @@ public class MyPageBoard extends AppCompatActivity {
             startActivity(newActivity);
         }
         return true;
-
     }
 }
+
+
+
+

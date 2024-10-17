@@ -8,67 +8,67 @@
     tools:context=".NewPostMenti">
 
     <include
-        layout="@layout/toolbar_main"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
 
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="16dp"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/back"
-        app:layout_constraintBottom_toBottomOf="@+id/create_party"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/divider1"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <TextView
         android:id="@+id/create_party"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
         android:font="@font/pretendard_bold"
         android:text="자유게시판"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/back_button"
-        app:layout_constraintStart_toEndOf="@id/back_button"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintBottom_toTopOf="@id/divider1"
+        app:layout_constraintLeft_toRightOf="@id/back_button"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.45" />
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_height="38dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_rounded_available"
         android:text="등록"
+        android:textAlignment="center"
         android:textColor="@color/primary"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/back_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/back_button"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintBottom_toTopOf="@id/divider1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.45" />
 
     <View
         android:id="@+id/divider1"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
         android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/free_forward"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/back_button" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.55" />
 
-    <!-- 승인 형태 드롭다운 -->
+    <!-- 자유게시판 말머리  -->
     <Spinner
         android:id="@+id/free_forward"
         android:layout_width="150dp"
-        android:layout_height="25dp"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/spinner_background"
@@ -80,19 +80,19 @@
     <Spinner
         android:id="@+id/number_of_people_spinner"
         android:layout_width="150dp"
-        android:layout_height="25dp"
+        android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/spinner_background"
         android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider1" />
 
     <View
         android:id="@+id/divider2"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,11 +103,14 @@
         android:id="@+id/title_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="7dp"
         android:hint="제목"
+        android:inputType="text"
+        android:maxLines="1"
         android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:singleLine="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider2" />
 
     <!-- 게시물 작성과 링크 입력 포함하는 레이아웃 -->
@@ -116,7 +119,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_text">
@@ -130,15 +133,16 @@
             android:gravity="top"
             android:hint="멘토/멘티글 작성"
             android:inputType="textMultiLine"
-            android:padding="12dp" />
+            android:padding="10dp" />
 
         <!-- 링크 입력과 확인 버튼을 포함하는 레이아웃 -->
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/link_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <!-- 링크 입력 -->
             <EditText
@@ -148,18 +152,39 @@
                 android:layout_weight="1"
                 android:background="@drawable/link_background"
                 android:hint="링크"
-                android:inputType="textUri" />
+                android:inputType="textUri"
+                android:maxLines="1"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/link_confirm_button"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- 확인 버튼 -->
             <Button
                 android:id="@+id/link_confirm_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/button_rounded_available"
+                android:clickable="true"
                 android:text="확인"
-                android:textColor="@color/primary" />
-        </LinearLayout>
+                android:textColor="@color/primary"
+                android:visibility="visible"
+                app:layout_constraintLeft_toRightOf="@id/link_text"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:autoLink="web"
+                android:textColorLink="@color/teal_200"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
     <View
@@ -172,42 +197,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content_layout" />
 
-    <!-- 태그 그룹 -->
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:chipSpacing="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider3"
-        app:singleLine="false">
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider3">
 
-        <!-- 태그 -->
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/TagText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="#실버"
-            app:chipBackgroundColor="@color/white" />
+            android:hint="태그를 입력하세요 (#으로 시작)"
+            android:inputType="text" />
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="#골드"
-            app:chipBackgroundColor="@color/white" />
+            android:orientation="horizontal"
+            android:paddingTop="10dp" />
+        <!-- 태그는 사용자가 입력시 추가하도록 설계-->
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="#자랭"
-            app:chipBackgroundColor="@color/white" />
-
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="#즐겜"
-            app:chipBackgroundColor="@color/white" />
-    </com.google.android.material.chip.ChipGroup>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
