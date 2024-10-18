@@ -138,7 +138,7 @@ public class PartyActivity extends AppCompatActivity {
     private List<PartyListItem> generateItemsList() {
         List<PartyListItem> pList = new ArrayList<>();
         pList.add(new PartyListItem("파티원 괌", "1/4", 33));
-
+        pList.add(new PartyListItem("빠르게 ㄱㄱ", "4/4", 22));
         return pList;
     }
 
