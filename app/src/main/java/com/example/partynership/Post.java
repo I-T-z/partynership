@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import androidx.appcompat.widget.Toolbar;
 public class Post extends AppCompatActivity {
     Toolbar toolbar;
     ImageButton back;
+    TextView title, content, link, datetime;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,10 @@ public class Post extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         back = findViewById(R.id.back_button);
+        title = findViewById(R.id.textViewTitle);
+        content = findViewById(R.id.content_text);
+        link = findViewById(R.id.link_text);
+        //datetime = findViewById(R.id.datetime_text);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

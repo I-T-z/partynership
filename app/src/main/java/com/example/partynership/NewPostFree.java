@@ -26,14 +26,11 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 
 public class NewPostFree extends AppCompatActivity {
-    String title, content, link,Date,Time;
+    String title, content, link, datetime;
     Button resbtn, linkbtn, linkmodibtn;
     ImageButton cancelbtn;
     ImageButton backbtn;
@@ -104,11 +101,9 @@ public class NewPostFree extends AppCompatActivity {
         resbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 현재 날짜와 시간 가져오기
-                sdf = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREAN);
-                Date = sdf.format (System.currentTimeMillis());
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.KOREAN);
-                Time = sdf.format (System.currentTimeMillis());
+                // 현재 날짜와 시간 가져오기 (DATETIME 형식으로 저장)
+                sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN);
+                datetime = sdf.format (System.currentTimeMillis());
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -129,7 +124,7 @@ public class NewPostFree extends AppCompatActivity {
                 };
 
                 // 넘길거 -> 현재 날짜와 시간을 추가
-                SavePostRequest SPRequest = new SavePostRequest(Date,Time, title, content, link, responseListener);
+                SavePostRequest SPRequest = new SavePostRequest(datetime, title, content, link, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(v.getContext());
                 queue.add(SPRequest);
             }

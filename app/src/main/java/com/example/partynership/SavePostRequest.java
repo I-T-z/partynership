@@ -11,16 +11,15 @@ import java.util.Map;
 public class SavePostRequest extends StringRequest {
     final static private String URL = "http://112.175.185.136:8080/Partynership/Partynership.jsp";
     private Map<String,String> parameters;
-    public SavePostRequest(String date, String time, String title, String content, String link, Response.Listener<String> listener) {
+    public SavePostRequest(String datetime,  String title, String content, String link, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
         parameters = new HashMap<>();
 
         // 파라미터에 날짜, 제목, 내용, 링크 추가
-        parameters.put("date", date);        // 날짜
-        parameters.put("time", time);        // 시간
-        parameters.put("title", title);      // 제목
-        parameters.put("content", content);  // 내용
-        parameters.put("link", link);        // 링크
+        parameters.put("datetime", datetime);   // 날짜+시간
+        parameters.put("title", title);         // 제목
+        parameters.put("content", content);     // 내용
+        parameters.put("link", link);           // 링크
     }
     @Override
     public Map<String, String> getParams() {
