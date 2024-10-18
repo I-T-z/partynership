@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FreeListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<com.example.partynership.FreeListItem> fList;
@@ -43,7 +44,7 @@ public class FreeListAdapter extends BaseAdapter {
 
         if (convertView == null) {
             //context에서 layoutinflater를 가져오는 방법
-
+            
             convertView = inflater.inflate(R.layout.listview_item_free, parent, false);
             holder = new ViewHolder();
             holder.forward = convertView.findViewById(R.id.free_forward);

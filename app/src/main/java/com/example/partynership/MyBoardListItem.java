@@ -20,6 +20,10 @@ public class MyBoardListItem {
     private String freeDate;
     private String freeTime;
     private String likenum;
+    @Override
+    public String toString() {
+        return "제목: " + forward + ", 게시물제목: " + subTitle + ", 작성자: " + memName;
+    }
 
     public String getLikenum() {
         return likenum;
@@ -79,6 +83,7 @@ public class MyBoardListItem {
         freeTime =_freeTime;
         likenum = _likenum;
         Log.d("mytest","리스트에 데이터 삽입");
+
     }
 
 }

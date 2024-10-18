@@ -13,12 +13,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class FreeBoardActivity extends AppCompatActivity {
     private ListView freeboardlist;
@@ -34,6 +39,7 @@ public class FreeBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_board); // 레이아웃 설정
+
 
         //TODO: 버튼 누르면 해당하는 엑티비티로 이동하기
         freebtn = findViewById(R.id.FreeBoard);
@@ -105,10 +111,14 @@ public class FreeBoardActivity extends AppCompatActivity {
                 Log.d("mytest","게시글 선택");
             }
         });
+
     }
 
     private List<FreeListItem> generateItemsList() {
         List<FreeListItem> fList = new ArrayList<>();
+        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
+        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
+        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
         fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
 
         return fList;

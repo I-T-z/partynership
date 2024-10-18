@@ -96,7 +96,7 @@
         <Button
             android:id="@+id/btn"
             android:layout_width="110dp"
-            android:layout_height="40dp"
+            android:layout_height="38dp"
             android:background="@drawable/button_rounded_available"
             android:text="글쓰기"
             android:textColor="@color/primary"

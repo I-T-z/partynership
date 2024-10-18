@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class PartyListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<PartyListItem> pList;

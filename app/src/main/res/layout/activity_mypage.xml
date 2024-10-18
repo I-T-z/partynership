@@ -7,21 +7,21 @@
     android:background="@android:color/white">
 
     <include
-        layout="@layout/toolbar_main"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
 
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="15dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
         android:background="@null"
-        android:src="@drawable/back"
         android:scaleType="centerCrop"
-        app:layout_constraintVertical_bias="0.1"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintVertical_bias="0.1" />
 
     <ImageButton
         android:id="@+id/setting_button"
@@ -30,26 +30,26 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
         android:background="@null"
-        android:src="@drawable/setting"
         android:scaleType="centerCrop"
-        app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:src="@drawable/setting"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/back_button"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.1" />
 
     <TextView
         android:id="@+id/my_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
         android:font="@font/pretendard_bold"
         android:text="내 정보"
-        android:textSize="20sp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/back_button"
         app:layout_constraintStart_toEndOf="@id/back_button"
-        app:layout_constraintBottom_toBottomOf="@id/back_button"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <ImageView
         android:id="@+id/imgProfile"
@@ -57,9 +57,9 @@
         android:layout_height="120dp"
         android:layout_marginLeft="5dp"
         android:src="@drawable/baseline_account_circle_24"
-        app:layout_constraintTop_toBottomOf="@+id/my_info"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/my_info" />
 
     <TextView
         android:id="@+id/my_name"
@@ -68,11 +68,11 @@
         android:layout_marginTop="5dp"
         android:font="@font/pretendard_bold"
         android:text="닉네임"
-        android:textSize="25sp"
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/imgProfile"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/imgProfile" />
 
     <TextView
         android:id="@+id/manner_score"
@@ -80,11 +80,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="(매너 점수)"
-        android:textSize="20sp"
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/my_name"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/my_name" />
 
     <TextView
         android:id="@+id/self_info"
@@ -92,45 +92,36 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="자기소개란^^@ ♡♥ 자기소개  자기소개"
-        android:textSize="18sp"
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/manner_score"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/manner_score" />
 
-    <LinearLayout
-        android:id="@+id/floating_btnBar"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/TapLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/self_info">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/self_info">
 
-        <Button
-            android:id="@+id/board"
-            android:backgroundTint="@color/primary"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="게시물" />
-
-        <Button
-            android:id="@+id/tag"
-            android:backgroundTint="@color/primary"
+            android:text="게시물"/>
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="후기" />
+            android:text="후기"/>
+    </com.google.android.material.tabs.TabLayout>
 
-
-    </LinearLayout>
-    <ListView
-        android:id="@+id/my_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/floating_btnBar"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ViewPager2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TapLayout"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

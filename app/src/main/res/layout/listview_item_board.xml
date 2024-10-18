@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/imgProfile"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="5dp"
             android:src="@drawable/baseline_account_circle_24"
             app:layout_constraintBottom_toBottomOf="@+id/smallmenu"
@@ -28,7 +28,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintVertical_bias="0" />
 
         <TextView
             android:id="@+id/list_subText"
@@ -39,11 +39,11 @@
             android:textColor="@color/title"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/smallmenu"
-            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toRightOf="@+id/imgProfile"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.01" />
 
         <TextView
             android:id="@+id/linetext"
@@ -58,7 +58,7 @@
             app:layout_constraintLeft_toRightOf="@+id/list_subText"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.01" />
 
         <TextView
             android:id="@+id/numtext"
@@ -73,13 +73,15 @@
             app:layout_constraintLeft_toRightOf="@+id/linetext"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.01" />
 
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
             android:orientation="horizontal"
+
             app:chipSpacing="8dp"
             android:layout_marginLeft="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -93,35 +95,39 @@
                 android:text="#실버"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
+
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#골드"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
+
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#자랭"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
+
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#즐겜"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
+
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#보이스O"
                 app:chipBackgroundColor="@color/white"
                 app:chipStrokeColor="#989898"
-                app:chipStrokeWidth="1dp"/>
+                app:chipStrokeWidth="1dp" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -131,15 +137,19 @@
     <Button
         android:id="@+id/ableBtn"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/button_rounded_available"
-        android:clickable="true"
+        android:clickable="false"
+        android:contextClickable="false"
         android:gravity="center"
+        android:padding="2dp"
         android:text="모집중"
         android:textColor="@color/primary"
-        android:textSize="16dp"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/smallmenu"
         app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintVertical_bias="0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

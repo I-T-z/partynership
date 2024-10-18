@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-
 public class GridAdapter extends BaseAdapter {
 
 

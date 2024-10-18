@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 
+
 public class NewPostParty extends AppCompatActivity {
     ArrayList<String> arrayList1, arrayList2;
     ArrayAdapter<String> arrayAdapter1, arrayAdapter2;

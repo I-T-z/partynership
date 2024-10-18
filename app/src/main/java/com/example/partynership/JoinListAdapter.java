@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
 public class JoinListAdapter extends BaseAdapter {
     ArrayList<JoinListItem> items = new ArrayList<>();
     Context context;
