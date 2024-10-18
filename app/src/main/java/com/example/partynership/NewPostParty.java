@@ -33,7 +33,7 @@ public class NewPostParty extends AppCompatActivity {
         resbtn = findViewById(R.id.register_button);
         backbtn = findViewById(R.id.back_button);
         approval = findViewById(R.id.approval_type_spinner);
-        number=findViewById(R.id.number_of_people_spinner);
+        number=findViewById(R.id.number_of_people_spinne);
         register_button = findViewById(R.id.register_button);
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override

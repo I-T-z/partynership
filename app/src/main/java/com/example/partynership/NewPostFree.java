@@ -1,5 +1,6 @@
 package com.example.partynership;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -8,10 +9,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -34,12 +38,13 @@ public class NewPostFree extends AppCompatActivity {
     Button resbtn, linkbtn, linkmodibtn;
     ImageButton cancelbtn;
     ImageButton backbtn;
-    Toolbar toolbar;
-    Spinner fowardspn;
+    Spinner fowardspn, selectboard, approvalspn1, numberspn1,approvalspn2, numberspn2;
     EditText tagedt, contenttxt, titletxt, linkedt;
     TextView linktxt;
-    ViewFlipper vf;
+    ViewFlipper vf, spinnerGp;
     SimpleDateFormat sdf;
+    RadioGroup rdg;
+    RadioButton rdmto,rdmtee;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,16 +52,49 @@ public class NewPostFree extends AppCompatActivity {
         setContentView(R.layout.activity_new_free);
 
         resbtn = findViewById(R.id.register_button);
-        backbtn = findViewById(R.id.back_button);
+        backbtn = findViewById(R.id.cancle_button);
         linkbtn = findViewById(R.id.link_confirm_button);
         cancelbtn = findViewById(R.id.cancel_btn);
         vf = findViewById(R.id.link_vf);
-
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        //TODO: 스피너 연결 --> 말머리 내용
+        spinnerGp = findViewById(R.id.spinnerGP);
         fowardspn = findViewById(R.id.free_forward);
+        selectboard = findViewById(R.id.select_borad);
+        approvalspn1 = findViewById(R.id.approval_type_spinner1);
+        numberspn1 = findViewById(R.id.number_of_people_spinner1);
+        approvalspn2 = findViewById(R.id.approval_type_spinner2);
+        numberspn2 = findViewById(R.id.number_of_people_spinner2);
+        rdg = findViewById(R.id.rdg);
+        rdmto = findViewById(R.id.rdmto);
+        rdmtee = findViewById(R.id.rdmtee);
+
+        //TODO: 게시판 선택 스피너 연결
+        //  --> 각 게시판에서 작성화면으로 intent보낼때 일정 코드 같이 보내서 선택하지 않아도 해당 화면 띄우게 설계 필요
+        String[] selectitems = {"[게시판선택]","자유게시판", "파티게시판", "멘토/멘티게시판"};
+        ArrayAdapter<String> adapterselect = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, selectitems);
+        //항목 레이아웃 설정
+        adapterselect.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // 스피너에 어댑터 설정
+        selectboard.setAdapter(adapterselect);
+
+        //TODO: 게시판 선택 리스너 설정
+        selectboard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 1){ //자유게시판 선택
+                    spinnerGp.setDisplayedChild(0);
+                }else if(position == 2){ //파티게시판 선택
+                    spinnerGp.setDisplayedChild(1);
+                }else if(position == 3){ //멘토멘티 선택
+                    spinnerGp.setDisplayedChild(2);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //일정 코드 저장해서 저장버튼 누를 때 알림창 띄우도록 설계
+            }
+        });
+
+        //TODO: [자유게시판] 말머리 선택 스피너 연결
         String[] items = {"[말머리]", "자유", "자랑"};
         // ArrayAdapter 생성 (Context, 레이아웃, 데이터 배열)
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
@@ -65,6 +103,28 @@ public class NewPostFree extends AppCompatActivity {
         // 스피너에 어댑터 설정
         fowardspn.setAdapter(adapter);
         //사용자가 말머리 선택안해서 스피너가 [말머리]라고 선택되어있다면 저장 안하게 하기
+
+        //TODO: [파티-멘토/멘티]승인형태 스피너 연결
+        String[] approvalitems = {"자동승인", "확인승인"};
+        // ArrayAdapter 생성 (Context, 레이아웃, 데이터 배열)
+        ArrayAdapter<String> aproveadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, approvalitems);
+        //항목 레이아웃 설정
+        aproveadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // 스피너에 어댑터 설정
+        approvalspn1.setAdapter(aproveadapter);
+        approvalspn2.setAdapter(aproveadapter);
+        //사용자가 말머리 선택안해서 스피너가 [말머리]라고 선택되어있다면 저장 안하게 하기
+        //TODO: [파티-멘토/멘티]신청인원 스피너 연결
+        String[] membitems = {"1", "2", "3","4"};
+        // ArrayAdapter 생성 (Context, 레이아웃, 데이터 배열)
+        ArrayAdapter<String> membadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, membitems);
+        //항목 레이아웃 설정
+        membadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // 스피너에 어댑터 설정
+        numberspn1.setAdapter(membadapter);
+        numberspn2.setAdapter(membadapter);
+        //사용자가 말머리 선택안해서 스피너가 [말머리]라고 선택되어있다면 저장 안하게 하기
+
 
         //TODO: 저장할만한 내용
         titletxt = findViewById(R.id.title_text);
@@ -103,7 +163,7 @@ public class NewPostFree extends AppCompatActivity {
             public void onClick(View v) {
                 // 현재 날짜와 시간 가져오기 (DATETIME 형식으로 저장)
                 sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN);
-                datetime = sdf.format (System.currentTimeMillis());
+                datetime = sdf.format(System.currentTimeMillis());
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -138,27 +198,5 @@ public class NewPostFree extends AppCompatActivity {
             }
         });
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.home) {
-            Intent newActivity = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(newActivity);
-        } else if (item.getItemId() == R.id.profile) {
-            Intent newActivity = new Intent(getApplicationContext(), MyPageBoard.class);
-            startActivity(newActivity);
-        }
-        return true;
-
-    }
-
 
 }
