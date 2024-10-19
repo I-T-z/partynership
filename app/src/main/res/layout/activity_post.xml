@@ -7,8 +7,8 @@
     android:background="@android:color/white">
 
     <include
-        layout="@layout/toolbar_main"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
 
     <ImageButton
         android:id="@+id/back_button"
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/back_button" />
 
-    <!--new_party에서 입력받은 제목을 띄워주는 TextView-->
+    <!--new_free에서 입력받은 제목을 띄워주는 TextView-->
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
@@ -61,16 +61,26 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider1" />
 
+    <!--new_free에서 입력받은 작성일을 띄워주는 TextView-->
+    <TextView
+        android:id="@+id/datetime_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="2024-10-18 18:51:00"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
     <!--칸 나누는 줄-->
     <View
         android:id="@+id/divider2"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@id/datetime_text" />
 
     <!-- 게시물 작성과 링크 입력 포함하는 레이아웃 -->
     <LinearLayout
@@ -103,13 +113,13 @@
                 android:layout_weight="1"
                 android:background="@drawable/link_background"
                 android:hint="링크"
-                android:textAlignment="viewStart"/>
+                android:textAlignment="viewStart" />
 
             <Button
-                android:gravity="center"
-                android:layout_marginLeft="300dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="300dp"
+                android:gravity="center"
                 android:text="확인" />
         </RelativeLayout>
     </LinearLayout>
@@ -151,8 +161,6 @@
             android:text="#즐겜"
             app:chipBackgroundColor="@color/white" />
     </com.google.android.material.chip.ChipGroup>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
