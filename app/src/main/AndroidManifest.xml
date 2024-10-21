@@ -18,7 +18,9 @@
         <activity android:name=".FreeBoardActivity" />
         <activity android:name=".MBoardActivity" />
         <activity android:name=".NewPostMenti" />
-        <activity android:name=".NewPostFree" />
+        <activity android:name=".NewPostFree"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true"/>
         <activity android:name=".NewPostParty" />
         <activity android:name=".MyPageTag" />
         <activity android:name=".MyPageBoard" />
