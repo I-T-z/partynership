@@ -38,7 +38,9 @@ public class Fragment1 extends Fragment {
         wtnbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //어느 게시판에서 넘어갔는지에 따라 나타나는 작성창 형식 다름
                 Intent intent = new Intent(getActivity(), NewPostFree.class);
+                intent.putExtra("boardname","자유게시판");
                 startActivity(intent);
             }
         });
