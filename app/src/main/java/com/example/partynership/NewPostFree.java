@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
@@ -34,17 +36,16 @@ import java.util.Locale;
 
 
 public class NewPostFree extends AppCompatActivity {
-    String title, content, link, datetime;
+    String title, content;
     Button resbtn, linkbtn, linkmodibtn;
     ImageButton cancelbtn;
     ImageButton backbtn;
-    Spinner fowardspn, selectboard, approvalspn1, numberspn1,approvalspn2, numberspn2;
+    Spinner fowardspn, selectboard, approvalspn1, numberspn1, approvalspn2, numberspn2;
     EditText tagedt, contenttxt, titletxt, linkedt;
     TextView linktxt;
     ViewFlipper vf, spinnerGp;
-    SimpleDateFormat sdf;
     RadioGroup rdg;
-    RadioButton rdmto,rdmtee;
+    RadioButton rdmto, rdmtee;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,7 @@ public class NewPostFree extends AppCompatActivity {
 
         //TODO: 게시판 선택 스피너 연결
         //  --> 각 게시판에서 작성화면으로 intent보낼때 일정 코드 같이 보내서 선택하지 않아도 해당 화면 띄우게 설계 필요
-        String[] selectitems = {"[게시판선택]","자유게시판", "파티게시판", "멘토/멘티게시판"};
+        String[] selectitems = {"[게시판선택]", "자유게시판", "파티게시판", "멘토/멘티게시판"};
         ArrayAdapter<String> adapterselect = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, selectitems);
         //항목 레이아웃 설정
         adapterselect.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -80,14 +81,15 @@ public class NewPostFree extends AppCompatActivity {
         selectboard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 1){ //자유게시판 선택
+                if (position == 1) { //자유게시판 선택
                     spinnerGp.setDisplayedChild(0);
-                }else if(position == 2){ //파티게시판 선택
+                } else if (position == 2) { //파티게시판 선택
                     spinnerGp.setDisplayedChild(1);
-                }else if(position == 3){ //멘토멘티 선택
+                } else if (position == 3) { //멘토멘티 선택
                     spinnerGp.setDisplayedChild(2);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 //일정 코드 저장해서 저장버튼 누를 때 알림창 띄우도록 설계
@@ -115,7 +117,7 @@ public class NewPostFree extends AppCompatActivity {
         approvalspn2.setAdapter(aproveadapter);
         //사용자가 말머리 선택안해서 스피너가 [말머리]라고 선택되어있다면 저장 안하게 하기
         //TODO: [파티-멘토/멘티]신청인원 스피너 연결
-        String[] membitems = {"1", "2", "3","4"};
+        String[] membitems = {"1", "2", "3", "4"};
         // ArrayAdapter 생성 (Context, 레이아웃, 데이터 배열)
         ArrayAdapter<String> membadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, membitems);
         //항목 레이아웃 설정
@@ -161,32 +163,7 @@ public class NewPostFree extends AppCompatActivity {
         resbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 현재 날짜와 시간 가져오기 (DATETIME 형식으로 저장)
-                sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN);
-                datetime = sdf.format(System.currentTimeMillis());
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            if (success) {
-                                title = jsonResponse.getString("titletxt");
-                                content = jsonResponse.getString("contexttxt");
-                                link = jsonResponse.getString("linkedt");
-                            } else {
-                                // 실패 처리
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-
-                // 넘길거 -> 현재 날짜와 시간을 추가
-                SavePostRequest SPRequest = new SavePostRequest(datetime, title, content, link, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(v.getContext());
-                queue.add(SPRequest);
+                savePost();
             }
         });
 
@@ -198,5 +175,56 @@ public class NewPostFree extends AppCompatActivity {
             }
         });
     }
+
+    private void savePost() {
+        title = titletxt.getText().toString().trim();
+        content = contenttxt.getText().toString().trim();
+
+        if (title.isEmpty() || content.isEmpty()) {
+            Toast.makeText(this, "제목과 내용을 입력하세요.", Toast.LENGTH_SHORT).show();
+        }
+
+        //서버 요청 처리
+        SavePostRequest SPRequest = new SavePostRequest(title, content,
+            new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Toast.makeText(NewPostFree.this, "게시글이 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(NewPostFree.this, "게시글 등록 실패: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d("게시글 등록 실패", error.getMessage());
+                }
+            });
+        Volley.newRequestQueue(this).add(SPRequest);
+    }
+        // 혹시 몰라서 일단 냄겨놓기..
+        /*Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    if (success) {
+                        title = jsonResponse.getString("titletxt");
+                        content = jsonResponse.getString("contexttxt");
+                        link = jsonResponse.getString("linkedt");
+                    } else {
+                        // 실패 처리
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        // 넘길거 -> 현재 날짜와 시간을 추가
+        SavePostRequest SPRequest = new SavePostRequest(datetime, title, content, link, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(v.getContext());
+        queue.add(SPRequest);*/
 
 }
