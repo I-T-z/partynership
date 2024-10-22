@@ -99,32 +99,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider2">
 
-        <!-- 자유게시판 내용 작성 -->
+    <!-- 자유게시판 내용 작성 -->
 
-        <!-- 링크 입력과 확인 버튼을 포함하는 레이아웃 -->
+    <!-- 링크 입력과 확인 버튼을 포함하는 레이아웃 -->
 
-        <!-- EditText editText = findViewById(R.id.content_text);
-    editText.setVerticalScrollBarEnabled(true);-->
-
-        <TextView
-            android:id="@+id/content_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:gravity="top"
-            android:hint="내용을 입력하세요"
-            android:inputType="textMultiLine"
-            android:maxLines="10"
+    <TextView
+        android:id="@+id/content_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:gravity="top"
+        android:hint="내용을 입력하세요"
+        android:inputType="textMultiLine"
+        android:maxLines="10"
             android:minLines="10"
-            android:overScrollMode="ifContentScrolls"
-            android:padding="10dp"
-            android:scrollbars="vertical" />
-
+        android:overScrollMode="ifContentScrolls"
+        android:padding="10dp"
+        android:scrollbars="vertical" />
+  
+            
     </LinearLayout>
+
 
 
     <!-- 태그 그룹 -->

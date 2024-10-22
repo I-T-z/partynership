@@ -19,6 +19,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
@@ -35,6 +37,9 @@ import java.util.Locale;
 
 
 public class NewPostFree extends AppCompatActivity {
+
+
+
     String title, content, link, datetime;
     Button resbtn, linkbtn;
     ImageButton cancelbtn;
@@ -43,7 +48,9 @@ public class NewPostFree extends AppCompatActivity {
     EditText tagedt, contenttxt, titletxt, linkedt;
     TextView linktxt;
     ViewFlipper linkvf, spinnerGp;
+
     SimpleDateFormat sdf;
+
     RadioGroup rdg;
     RadioButton rdmto, rdmtee;
 
@@ -193,9 +200,12 @@ public class NewPostFree extends AppCompatActivity {
         resbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                savePost();
+
                 Log.d("mytest", "onClick: 등록버튼 눌리고 있나요?");
                 // 현재 날짜와 시간 가져오기 (DATETIME 형식으로 저장)
-                sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN);
+           //     sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN);
                 datetime = sdf.format(System.currentTimeMillis());
 //                Response.Listener<String> responseListener = new Response.Listener<String>() {
 //                    @Override
@@ -269,6 +279,7 @@ public class NewPostFree extends AppCompatActivity {
                     startActivity(pintent);
                 }
 
+
             }
         });
 
@@ -281,4 +292,30 @@ public class NewPostFree extends AppCompatActivity {
         });
     }
 
+    private void savePost() {
+        title = titletxt.getText().toString().trim();
+        content = contenttxt.getText().toString().trim();
+
+        if (title.isEmpty() || content.isEmpty()) {
+            Toast.makeText(this, "제목과 내용을 입력하세요.", Toast.LENGTH_SHORT).show();
+        }
+
+        //서버 요청 처리
+        SavePostRequest SPRequest = new SavePostRequest(title, content,
+            new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Toast.makeText(NewPostFree.this, "게시글이 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(NewPostFree.this, "게시글 등록 실패: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d("게시글 등록 실패", error.getMessage());
+                }
+            });
+        Volley.newRequestQueue(this).add(SPRequest);
+    }
 }

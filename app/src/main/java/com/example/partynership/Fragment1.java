@@ -66,6 +66,9 @@ public class Fragment1 extends Fragment {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
+
+     
+
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
                     Intent intent = new Intent(getActivity(), Post.class);
@@ -75,6 +78,7 @@ public class Fragment1 extends Fragment {
                     intent.putExtra("datetime","2024-10-21 00:01:23");
                     startActivity(intent);
                 }
+
             }
         });
         return view;
