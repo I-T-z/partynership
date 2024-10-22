@@ -37,6 +37,7 @@ public class Fragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), NewPostFree.class);
+                intent.putExtra("boardname","파티게시판");
                 startActivity(intent);
             }
         });

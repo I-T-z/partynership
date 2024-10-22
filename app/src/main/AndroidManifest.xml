@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,7 +19,9 @@
         <activity android:name=".FreeBoardActivity" />
         <activity android:name=".MBoardActivity" />
         <activity android:name=".NewPostMenti" />
-        <activity android:name=".NewPostFree" />
+        <activity android:name=".NewPostFree"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true"/>
         <activity android:name=".NewPostParty" />
         <activity android:name=".MyPageTag" />
         <activity android:name=".MyPageBoard" />

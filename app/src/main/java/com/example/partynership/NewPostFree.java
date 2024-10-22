@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,13 +38,13 @@ import java.util.Locale;
 
 public class NewPostFree extends AppCompatActivity {
     String title, content;
-    Button resbtn, linkbtn, linkmodibtn;
+    Button resbtn, linkbtn;
     ImageButton cancelbtn;
     ImageButton backbtn;
     Spinner fowardspn, selectboard, approvalspn1, numberspn1, approvalspn2, numberspn2;
     EditText tagedt, contenttxt, titletxt, linkedt;
     TextView linktxt;
-    ViewFlipper vf, spinnerGp;
+    ViewFlipper linkvf, spinnerGp;
     RadioGroup rdg;
     RadioButton rdmto, rdmtee;
 
@@ -56,7 +57,7 @@ public class NewPostFree extends AppCompatActivity {
         backbtn = findViewById(R.id.cancle_button);
         linkbtn = findViewById(R.id.link_confirm_button);
         cancelbtn = findViewById(R.id.cancel_btn);
-        vf = findViewById(R.id.link_vf);
+        linkvf = findViewById(R.id.link_vf);
         spinnerGp = findViewById(R.id.spinnerGP);
         fowardspn = findViewById(R.id.free_forward);
         selectboard = findViewById(R.id.select_borad);
@@ -67,6 +68,8 @@ public class NewPostFree extends AppCompatActivity {
         rdg = findViewById(R.id.rdg);
         rdmto = findViewById(R.id.rdmto);
         rdmtee = findViewById(R.id.rdmtee);
+        ViewGroup.LayoutParams params = linkvf.getLayoutParams();
+
 
         //TODO: 게시판 선택 스피너 연결
         //  --> 각 게시판에서 작성화면으로 intent보낼때 일정 코드 같이 보내서 선택하지 않아도 해당 화면 띄우게 설계 필요
@@ -79,15 +82,25 @@ public class NewPostFree extends AppCompatActivity {
 
         //TODO: 게시판 선택 리스너 설정
         selectboard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 1) { //자유게시판 선택
+                if (position == 1) {//자유게시판 선택
                     spinnerGp.setDisplayedChild(0);
+                    //링크작성칸을 없애기 위해 크기 자체를 0으로 만들기
+                    params.width = 0;
+                    params.height = 0;
                 } else if (position == 2) { //파티게시판 선택
                     spinnerGp.setDisplayedChild(1);
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 } else if (position == 3) { //멘토멘티 선택
                     spinnerGp.setDisplayedChild(2);
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 }
+                linkvf.setLayoutParams(params);
+                linkvf.requestLayout();
             }
 
             @Override
@@ -96,6 +109,24 @@ public class NewPostFree extends AppCompatActivity {
             }
         });
 
+        //TODO: 어떤 게시판 창에서 넘어왔는지 확인하기
+        Intent intent = getIntent();
+        // intent 값 가져옴
+        String boardname = intent.getStringExtra("boardname");
+
+        if (boardname != null) { // null 체크
+            if (boardname.equals("자유게시판")) { // 자유게시판 선택
+                // 첫번째 스피너 값 지정하기
+                selectboard.setSelection(1);
+            } else if (boardname.equals("파티게시판")) { // 파티게시판 선택
+                selectboard.setSelection(2);
+            } else if (boardname.equals("멘토/멘티게시판")) { // 멘토멘티 선택
+                selectboard.setSelection(3);
+            }
+        } else {
+            //기본 값 선택
+            selectboard.setSelection(0);
+        }
         //TODO: [자유게시판] 말머리 선택 스피너 연결
         String[] items = {"[말머리]", "자유", "자랑"};
         // ArrayAdapter 생성 (Context, 레이아웃, 데이터 배열)
@@ -107,7 +138,7 @@ public class NewPostFree extends AppCompatActivity {
         //사용자가 말머리 선택안해서 스피너가 [말머리]라고 선택되어있다면 저장 안하게 하기
 
         //TODO: [파티-멘토/멘티]승인형태 스피너 연결
-        String[] approvalitems = {"자동승인", "확인승인"};
+        String[] approvalitems = {"승인방법", "자동승인", "확인승인"};
         // ArrayAdapter 생성 (Context, 레이아웃, 데이터 배열)
         ArrayAdapter<String> aproveadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, approvalitems);
         //항목 레이아웃 설정
@@ -117,7 +148,8 @@ public class NewPostFree extends AppCompatActivity {
         approvalspn2.setAdapter(aproveadapter);
         //사용자가 말머리 선택안해서 스피너가 [말머리]라고 선택되어있다면 저장 안하게 하기
         //TODO: [파티-멘토/멘티]신청인원 스피너 연결
-        String[] membitems = {"1", "2", "3", "4"};
+        String[] membitems = {"인원", "1", "2", "3", "4"};
+        //--> TODO:멘토멘티에서 인원 선택 시 위 배열 요소를 2번째 까지만 출력해야함
         // ArrayAdapter 생성 (Context, 레이아웃, 데이터 배열)
         ArrayAdapter<String> membadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, membitems);
         //항목 레이아웃 설정
@@ -126,7 +158,6 @@ public class NewPostFree extends AppCompatActivity {
         numberspn1.setAdapter(membadapter);
         numberspn2.setAdapter(membadapter);
         //사용자가 말머리 선택안해서 스피너가 [말머리]라고 선택되어있다면 저장 안하게 하기
-
 
         //TODO: 저장할만한 내용
         titletxt = findViewById(R.id.title_text);
@@ -140,7 +171,7 @@ public class NewPostFree extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String url = linkedt.getText().toString().trim(); //사용자가 입력한 link를 string으로 저장
-                vf.setDisplayedChild(1);
+                linkvf.setDisplayedChild(1);
                 // URL 형식이 맞는지 확인
                 if (!url.startsWith("http://") && !url.startsWith("https://")) {
                     url = url;
@@ -156,7 +187,7 @@ public class NewPostFree extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 linktxt.setText("");
-                vf.setDisplayedChild(2);
+                linkvf.setDisplayedChild(2);
             }
         });
 

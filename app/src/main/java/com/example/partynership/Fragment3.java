@@ -39,6 +39,7 @@ Button wtnbtn;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), NewPostFree.class);
+                intent.putExtra("boardname","멘토/멘티게시판");
                 startActivity(intent);
             }
         });
