@@ -50,8 +50,7 @@ public class FreeListAdapter extends BaseAdapter {
             holder.forward = convertView.findViewById(R.id.free_forward);
             holder.subTitle = convertView.findViewById(R.id.free_subTitle);
             holder.memName = convertView.findViewById(R.id.free_memName);
-            holder.freeDate = convertView.findViewById(R.id.free_date);
-            holder.freeTime = convertView.findViewById(R.id.free_time);
+            holder.freeDateTime = convertView.findViewById(R.id.free_date_time);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -60,8 +59,7 @@ public class FreeListAdapter extends BaseAdapter {
         holder.forward.setText(fItem.getForward());
         holder.subTitle.setText(fItem.getSubTitle());
         holder.memName.setText(fItem.getMemName());
-        holder.freeDate.setText(fItem.getFreeDate());
-        holder.freeDate.setText(fItem.getFreeDate());
+        holder.freeDateTime.setText(fItem.getfreeDateTime());
 
         return convertView;
     }
@@ -70,7 +68,6 @@ public class FreeListAdapter extends BaseAdapter {
         TextView forward;
         TextView subTitle;
         TextView memName;
-        TextView freeDate;
-        TextView freeTime;
+        TextView freeDateTime;
     }
 }

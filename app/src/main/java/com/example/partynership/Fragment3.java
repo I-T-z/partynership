@@ -49,7 +49,7 @@ Button wtnbtn;
 
     private List<PartyListItem> generateItemsList() {
         List<PartyListItem> pList = new ArrayList<>();
-        pList.add(new PartyListItem("멘티 모집합니다.", "0/1", 33));
+        pList.add(new PartyListItem("뉴비받아라.", "0/1", 33));
         pList.add(new PartyListItem("멘티 모집합니다.", "0/1", 33));
         pList.add(new PartyListItem("멘티 모집합니다.", "0/1", 33));
         pList.add(new PartyListItem("멘티 모집합니다.", "0/1", 33));

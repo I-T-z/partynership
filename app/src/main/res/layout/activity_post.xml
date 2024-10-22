@@ -48,17 +48,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/back_button" />
 
+    <TextView
+        android:id="@+id/forward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:text="[자랑]"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@id/divider1" />
     <!--new_free에서 입력받은 제목을 띄워주는 TextView-->
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
-        android:text="[자랑] 가챠 성공"
+        android:text="가챠 성공"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/forward"
         app:layout_constraintTop_toBottomOf="@id/divider1" />
 
     <!--new_free에서 입력받은 작성일을 띄워주는 TextView-->
@@ -88,57 +99,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider2">
 
-    <!-- 자유게시판 내용 작성 -->
+        <!-- 자유게시판 내용 작성 -->
 
-    <!-- 링크 입력과 확인 버튼을 포함하는 레이아웃 -->
+        <!-- 링크 입력과 확인 버튼을 포함하는 레이아웃 -->
 
-    <TextView
-        android:id="@+id/content_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:gravity="top"
-        android:hint="내용을 입력하세요"
-        android:inputType="textMultiLine"
-        android:minLines="8"
-        android:overScrollMode="ifContentScrolls"
-        android:padding="10dp"
-        android:scrollbars="vertical" />
-    <!-- EditText editText = findViewById(R.id.content_text);
+        <!-- EditText editText = findViewById(R.id.content_text);
     editText.setVerticalScrollBarEnabled(true);-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:orientation="horizontal">
-        <!-- 링크 입력 -->
         <TextView
-            android:id="@+id/link_edt"
+            android:id="@+id/content_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/link_background"
-            android:inputType="textUri"
-            android:maxLines="1" />
+            android:background="@null"
+            android:gravity="top"
+            android:hint="내용을 입력하세요"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:minLines="10"
+            android:overScrollMode="ifContentScrolls"
+            android:padding="10dp"
+            android:scrollbars="vertical" />
 
-        <!-- 확인 버튼 -->
-        <Button
-            android:id="@+id/link_confirm_button"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/button_rounded_available"
-            android:clickable="true"
-            android:text="확인"
-            android:textColor="@color/primary" />
-    </LinearLayout>
     </LinearLayout>
 
 
