@@ -15,8 +15,8 @@ public class SavePostRequest extends StringRequest {
         params = new HashMap<>();
 
         // 파라미터에 게시판 코드, 멤버 코드, 제목, 내용, 링크 추가
-        params.put("b_code", "1");          // 게시판 코드 (임시지정)
-        params.put("m_code", "1");          // 멤버 코드 (임시지정)
+        params.put("b_code", "12");         // 게시판 코드 (임시지정)
+        params.put("m_code", "11111");      // 멤버 코드 (임시지정)
         params.put("title", title);         // 제목
         params.put("content", content);     // 내용
     }

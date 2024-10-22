@@ -202,29 +202,4 @@ public class NewPostFree extends AppCompatActivity {
             });
         Volley.newRequestQueue(this).add(SPRequest);
     }
-        // 혹시 몰라서 일단 냄겨놓기..
-        /*Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonResponse = new JSONObject(response);
-                    boolean success = jsonResponse.getBoolean("success");
-                    if (success) {
-                        title = jsonResponse.getString("titletxt");
-                        content = jsonResponse.getString("contexttxt");
-                        link = jsonResponse.getString("linkedt");
-                    } else {
-                        // 실패 처리
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        // 넘길거 -> 현재 날짜와 시간을 추가
-        SavePostRequest SPRequest = new SavePostRequest(datetime, title, content, link, responseListener);
-        RequestQueue queue = Volley.newRequestQueue(v.getContext());
-        queue.add(SPRequest);*/
-
 }
