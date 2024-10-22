@@ -48,10 +48,10 @@ public class Fragment2 extends Fragment {
     }
     private List<PartyListItem> generateItemsList() {
         List<PartyListItem> pList = new ArrayList<>();
-        pList.add(new PartyListItem("파티원 괌", "1/4", 33));
-        pList.add(new PartyListItem("파티원 괌", "1/4", 33));
-        pList.add(new PartyListItem("파티원 괌", "1/4", 33));
-        pList.add(new PartyListItem("파티원 괌", "1/4", 33));
+        pList.add(new PartyListItem("파티원 괌", "0/4", 33));
+        pList.add(new PartyListItem("파티원 괌", "3/4", 33));
+        pList.add(new PartyListItem("빨리 ㄱㄱ", "1/4", 33));
+        pList.add(new PartyListItem("같이 디코하실?", "2/4", 33));
 
         return pList;
     }

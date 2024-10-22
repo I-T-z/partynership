@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
+
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -37,38 +38,52 @@ public class MBoardActivity extends AppCompatActivity {
         vpAdapter.addFragment(new Fragment3(), "멘토/멘티게시판");
         viewPager.setAdapter(vpAdapter);
 
+        // Intent로 전달된 fragmentKey 값 받아서 ViewPager의 현재 페이지 설정
+        Intent intent = getIntent();
+        int fragmentKey = intent.getIntExtra("fragmentKey", 0);  // 기본값은 0 (자유게시판)
+
+
         // TabLayout과 ViewPager2 연결
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             tab.setText(vpAdapter.getPageTitle(position));
         }).attach();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main_menu, menu);  // main_menu.xml 파일에서 메뉴 항목 추가
-        return true;
-    }
-    //툴바에 표시된 액션 또는 오버플로우 메뉴가 선택되면 액티비티의 onOptionsItemSelected() 메소드가 호출
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.home) {
-            Intent newActivityHome = new Intent(MBoardActivity.this, MainActivity.class);
-            startActivity(newActivityHome);
-            return true;
-        } else if (item.getItemId() == R.id.profile) {
-            try {
-                Intent newActivityProfile = new Intent(MBoardActivity.this, MyPageBoard.class);
-                startActivity(newActivityProfile);
-            } catch (Exception e) {
-                Log.e("Error", "Failed to start MyPageBoard activity", e);
-                Log.d("test", "마이페이지 버튼이 눌림");
-            }
-            return true;
+        if (fragmentKey >= 0 && fragmentKey < vpAdapter.getItemCount()) {
+            Log.d("mytest", "onCreate: " + viewPager.getCurrentItem());
+            viewPager.setCurrentItem(fragmentKey);  // 해당 fragmentKey 값으로 페이지 이동
+            Log.d("mytest", "setCurrentItem: " + viewPager.getCurrentItem());
         } else {
-            return super.onOptionsItemSelected(item);
+            Log.d("mytest", "Invalid fragmentKey: " + fragmentKey + ", setting to default (0)");
+            viewPager.setCurrentItem(0);  // 기본값으로 설정
+            }
         }
 
+        @Override
+        public boolean onCreateOptionsMenu (Menu menu){
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.main_menu, menu);  // main_menu.xml 파일에서 메뉴 항목 추가
+            return true;
+        }
 
+        //툴바에 표시된 액션 또는 오버플로우 메뉴가 선택되면 액티비티의 onOptionsItemSelected() 메소드가 호출
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+            if (item.getItemId() == R.id.home) {
+                Intent newActivityHome = new Intent(MBoardActivity.this, MainActivity.class);
+                startActivity(newActivityHome);
+                return true;
+            } else if (item.getItemId() == R.id.profile) {
+                try {
+                    Intent newActivityProfile = new Intent(MBoardActivity.this, MyPageBoard.class);
+                    startActivity(newActivityProfile);
+                } catch (Exception e) {
+                    Log.e("Error", "Failed to start MyPageBoard activity", e);
+                    Log.d("test", "마이페이지 버튼이 눌림");
+                }
+                return true;
+            } else {
+                return super.onOptionsItemSelected(item);
+            }
+
+
+        }
     }
-}

@@ -28,7 +28,7 @@ import org.json.JSONObject;
 public class Post extends AppCompatActivity {
     Toolbar toolbar;
     ImageButton back;
-    TextView title, content, link, datetime;
+    TextView forward, title, content, datetime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,10 +38,22 @@ public class Post extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         back = findViewById(R.id.back_button);
+        forward = findViewById(R.id.forward);
         title = findViewById(R.id.textViewTitle);
         content = findViewById(R.id.content_text);
-        link = findViewById(R.id.link_text);
         datetime = findViewById(R.id.datetime_text);
+
+        Intent intent = getIntent();
+        // intent 값 가져옴
+        String sforward = intent.getStringExtra("forward");
+        String stitle = intent.getStringExtra("title");
+        String scontent = intent.getStringExtra("content");
+        String sdatetime = intent.getStringExtra("datetime");
+
+        forward.setText(sforward);
+        title.setText(stitle);
+        content.setText(scontent);
+        datetime.setText(sdatetime);
 
         // RequestQueue 초기화
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -56,10 +68,9 @@ public class Post extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            // 서버로부터 데이터 가져와서 TextView에 설정
+                            //서버로부터 데이터 가져와서 TextView에 설정
                             title.setText(response.getString("title"));
                             content.setText(response.getString("content"));
-                            link.setText(response.getString("link"));
                             datetime.setText(response.getString("created_at"));
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -76,10 +87,20 @@ public class Post extends AppCompatActivity {
         // 요청을 큐에 추가
         queue.add(jsonObjectRequest);
 
+        Intent gitent = getIntent();
+
+        forward.setText("["+gitent.getStringExtra("forward")+"]");
+        title.setText(gitent.getStringExtra("title"));
+        content.setText(gitent.getStringExtra("content"));
+        datetime.setText(gitent.getStringExtra("datetime"));
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(Post.this, MBoardActivity.class);
+                intent.putExtra("fragmentkey",0);
+                startActivity(intent);
+
             }
         });
     }

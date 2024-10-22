@@ -91,7 +91,7 @@ public class FreeBoardActivity extends AppCompatActivity {
         //TODO: 커스텀 리스트 뷰
         // ListView참조 붙일 xml 명시
         freeboardlist = findViewById(R.id.free_boardlist);
-        fList = generateItemsList();
+        //fList = generateItemsList();
         //어댑터 생성
         fAdapter = new com.example.partynership.FreeListAdapter(this, fList);
 
@@ -114,15 +114,15 @@ public class FreeBoardActivity extends AppCompatActivity {
 
     }
 
-    private List<FreeListItem> generateItemsList() {
-        List<FreeListItem> fList = new ArrayList<>();
-        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
-        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
-        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
-        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
-
-        return fList;
-    }
+//    private List<FreeListItem> generateItemsList() {
+//        List<FreeListItem> fList = new ArrayList<>();
+//        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
+//        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
+//        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
+//        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
+//
+//        return fList;
+//    }
 
     //menu resource 내용을 toolbar에 반영
     @Override
