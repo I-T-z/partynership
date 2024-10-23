@@ -92,7 +92,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.3" />
         <TextView
+<<<<<<< HEAD
             android:id="@+id/free_datetime"
+=======
+            android:id="@+id/free_date_time"
+>>>>>>> origin/hyen
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:font="@font/pretendard_light"
@@ -106,6 +110,10 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.3" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/hyen
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

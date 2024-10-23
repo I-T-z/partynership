@@ -84,16 +84,15 @@
         app:layout_constraintTop_toBottomOf="@id/datetime_text" />
 
     <!-- 게시물 작성과 링크 입력 포함하는 레이아웃 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/content_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider2">
-
+<!--
         <ImageView
             android:id="@+id/imgV"
             android:layout_width="50dp"
@@ -104,42 +103,45 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/join_text"
+            android:id="@+id/approval_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pretendard_extrabold"
             android:gravity="top"
             android:padding="12dp"
-            android:text="자동참여|확인참여"
+            android:text="자동승인|확인승인"
             android:textSize="15sp"
-            app:layout_constraintLeft_toRightOf="@id/imgV"
+            app:layout_constraintLeft_toRightOf="@id/divider2"
             app:layout_constraintTop_toTopOf="parent" />
-
+-->
         <TextView
             android:id="@+id/content_text"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:gravity="top"
-            android:padding="12dp"
             android:text="조건 작성 또는 태그 선택"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgV" />
+            android:inputType="textMultiLine"
+            android:maxLines="8"
+            android:minLines="8"
+            android:overScrollMode="ifContentScrolls"
+            android:padding="10dp"
+            android:scrollbars="vertical" />
 
         <TextView
             android:id="@+id/link_text"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:autoLink="web"
             android:background="@drawable/link_background"
             android:linksClickable="true"
             android:text="링크"
             android:textSize="15sp"
+            android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/content_text" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>>
 
     <!-- 태그 그룹 -->
     <com.google.android.material.chip.ChipGroup

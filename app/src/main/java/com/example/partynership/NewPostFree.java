@@ -37,7 +37,10 @@ import java.util.Locale;
 
 
 public class NewPostFree extends AppCompatActivity {
-    String title, content;
+
+
+
+    String title, content, link, datetime;
     Button resbtn, linkbtn;
     ImageButton cancelbtn;
     ImageButton backbtn;
@@ -45,6 +48,9 @@ public class NewPostFree extends AppCompatActivity {
     EditText tagedt, contenttxt, titletxt, linkedt;
     TextView linktxt;
     ViewFlipper linkvf, spinnerGp;
+
+    SimpleDateFormat sdf;
+
     RadioGroup rdg;
     RadioButton rdmto, rdmtee;
 
@@ -128,7 +134,7 @@ public class NewPostFree extends AppCompatActivity {
             selectboard.setSelection(0);
         }
         //TODO: [자유게시판] 말머리 선택 스피너 연결
-        String[] items = {"[말머리]", "자유", "자랑"};
+        String[] items = {"[말머리]", "자유", "자랑", "공략"};
         // ArrayAdapter 생성 (Context, 레이아웃, 데이터 배열)
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         //항목 레이아웃 설정
@@ -194,7 +200,86 @@ public class NewPostFree extends AppCompatActivity {
         resbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 savePost();
+
+                Log.d("mytest", "onClick: 등록버튼 눌리고 있나요?");
+                // 현재 날짜와 시간 가져오기 (DATETIME 형식으로 저장)
+           //     sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN);
+                datetime = sdf.format(System.currentTimeMillis());
+//                Response.Listener<String> responseListener = new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        try {
+//                            JSONObject jsonResponse = new JSONObject(response);
+//                            boolean success = jsonResponse.getBoolean("success");
+//                            if (success) {
+//                                title = jsonResponse.getString("titletxt");
+//                                content = jsonResponse.getString("contexttxt");
+//                                link = jsonResponse.getString("linkedt");
+//                            } else {
+//                                // 실패 처리
+//                            }
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                };
+//
+//                // 넘길거 -> 현재 날짜와 시간을 추가
+//                SavePostRequest SPRequest = new SavePostRequest(datetime, title, content, link, responseListener);
+//                RequestQueue queue = Volley.newRequestQueue(v.getContext());
+//                queue.add(SPRequest);
+
+
+                title = titletxt.getText().toString();
+                content = contenttxt.getText().toString();
+               // tag = tagedt.getText().toString();
+                link = linkedt.getText().toString();
+                Intent pintent;
+                String forward;
+                String approval;
+                String number;
+                //TODO: 선택된 게시판에 따라 저장하고 보이는 화면이 달라짐
+                if(selectboard.getSelectedItem().equals("자유게시판")) {
+                    Log.d("mytest", "onClick: 게시판이 자유게시판인가요");
+                    pintent = new Intent(NewPostFree.this, Post.class);
+                    //말머리 필수
+                    forward=fowardspn.getSelectedItem().toString();
+                    pintent.putExtra("forward",forward);
+                    pintent.putExtra("datetime", datetime);
+                    pintent.putExtra("title", title);
+                    pintent.putExtra("content", content);
+                    startActivity(pintent);
+                }else if(selectboard.getSelectedItem().equals("파티게시판")){
+                    Log.d("mytest", "onClick: 게시판이 파티게시판인가요");
+                    pintent = new Intent(NewPostFree.this, PostParty.class);
+                    //승인형태, 인원
+                    approval = approvalspn1.getSelectedItem().toString();
+                    number = numberspn1.getSelectedItem().toString();
+                    pintent.putExtra("approval",approval);
+                    pintent.putExtra("number",number);
+                    pintent.putExtra("datetime", datetime);
+                    pintent.putExtra("title", title);
+                    pintent.putExtra("content", content);
+                    pintent.putExtra("link", link);
+                    startActivity(pintent);
+                } else if (selectboard.getSelectedItem().equals("멘토/멘티게시판")) {
+                    Log.d("mytest", "onClick: 게시판이 멘토멘티게시판인가요");
+                    pintent = new Intent(NewPostFree.this, PostMentor.class);
+                    //승인 형태, 인원, 멘티/멘티 선택
+                    approval=approvalspn2.getSelectedItem().toString();
+                    number=numberspn1.getSelectedItem().toString();
+                    pintent.putExtra("approval",approval);
+                    pintent.putExtra("number",number);
+                    pintent.putExtra("datetime", datetime);
+                    pintent.putExtra("title", title);
+                    pintent.putExtra("content", content);
+                    pintent.putExtra("link", link);
+                    startActivity(pintent);
+                }
+
+
             }
         });
 
