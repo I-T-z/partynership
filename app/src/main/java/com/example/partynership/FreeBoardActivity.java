@@ -116,10 +116,10 @@ public class FreeBoardActivity extends AppCompatActivity {
 
     private List<FreeListItem> generateItemsList() {
         List<FreeListItem> fList = new ArrayList<>();
-        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
-        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
-        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
-        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29", "00:01:23"));
+        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29 00:01:23"));
+        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29 00:01:23"));
+        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29 00:01:23"));
+        fList.add(new FreeListItem("[자랑]", "가챠성공", "뭉가", "2024-01-29 00:01:23"));
 
         return fList;
     }

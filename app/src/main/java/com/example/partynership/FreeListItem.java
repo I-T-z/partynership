@@ -7,8 +7,7 @@ public class FreeListItem {
     private String forward;
     private String subTitle;
     private String memName;
-    private String freeDate;
-    private String freeTime;
+    private String freeDatetime;
 
 
     public String getForward() {
@@ -35,29 +34,20 @@ public class FreeListItem {
         this.memName = memName;
     }
 
-    public String getFreeDate() {
-        return freeDate;
+    public String getFreeDatetime() {
+        return freeDatetime;
     }
 
-    public void setFreeDate(String freeDate) {
-        this.freeDate = freeDate;
-    }
-
-    public String getFreeTime() {
-        return freeTime;
-    }
-
-    public void setFreeTime(String freeTime) {
-        this.freeTime = freeTime;
+    public void setFreeDatetime(String freeDatetime) {
+        this.freeDatetime = freeDatetime;
     }
 
     //이 생성자를 통해서 값을 넘겨받고 전역변수에 저장한다.
-    FreeListItem(String _forward, String _subTitle, String _memName, String _freeDate, String _freeTime){
+    FreeListItem(String _forward, String _subTitle, String _memName, String _freeDatetime){
         forward = _forward;
         subTitle = _subTitle;
         memName =_memName;
-        freeDate =_freeDate;
-        freeTime =_freeTime;
+        freeDatetime =_freeDatetime;
         Log.d("mytest","리스트에 데이터 삽입");
     }
 

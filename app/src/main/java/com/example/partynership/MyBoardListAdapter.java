@@ -45,7 +45,7 @@ public class MyBoardListAdapter extends BaseAdapter {
             holder.subTitle = convertView.findViewById(R.id.free_subTitle);
             holder.memName = convertView.findViewById(R.id.free_memName);
             holder.riple = convertView.findViewById(R.id.free_riple);
-            holder.freeDate = convertView.findViewById(R.id.free_date);
+            holder.freeDate = convertView.findViewById(R.id.free_datetime);
             holder.freeTime = convertView.findViewById(R.id.free_time);
             holder.likenum = convertView.findViewById(R.id.likenum);
             convertView.setTag(holder);
