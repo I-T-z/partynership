@@ -51,7 +51,7 @@
 
     <!--new_party에서 입력받은 제목을 띄워주는 TextView-->
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -72,7 +72,7 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@id/title_text" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/smallmenu"

@@ -4,11 +4,14 @@ import android.util.Log;
 
 public class FreeListItem {
 
+    private String postCode;
     private String forward;
     private String subTitle;
     private String memName;
     private String freeDatetime;
 
+
+    public String getPostCode() { return postCode; }
 
     public String getForward() {
         return forward;
@@ -43,7 +46,8 @@ public class FreeListItem {
     }
 
     //이 생성자를 통해서 값을 넘겨받고 전역변수에 저장한다.
-    FreeListItem(String _forward, String _subTitle, String _memName, String _freeDatetime){
+    FreeListItem(String _postCode, String _forward, String _subTitle, String _memName, String _freeDatetime){
+        postCode = _postCode;
         forward = _forward;
         subTitle = _subTitle;
         memName =_memName;

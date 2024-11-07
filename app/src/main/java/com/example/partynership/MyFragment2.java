@@ -31,9 +31,9 @@ public class MyFragment2 extends Fragment {
 
     private List<MyBoardListItem> generateItemsList() {
         List<MyBoardListItem> mList = new ArrayList<>();
-        mList.add(new MyBoardListItem("후기", "정말 재밌어요!", "사용자A", "45", "2024-01-30", "00:15:00", "333"));
-        mList.add(new MyBoardListItem("후기", "정말 재밌어요!", "사용자A", "45", "2024-01-30", "00:15:00", "333"));
-        mList.add(new MyBoardListItem("후기", "정말 재밌어요!", "사용자A", "45", "2024-01-30", "00:15:00", "333"));
+        mList.add(new MyBoardListItem("후기", "정말 재밌어요!", "사용자A", "2024-01-30 00:15:00"));
+        mList.add(new MyBoardListItem("후기", "정말 재밌어요!", "사용자A", "2024-01-30 00:15:00"));
+        mList.add(new MyBoardListItem("후기", "정말 재밌어요!", "사용자A", "2024-01-30 00:15:00"));
         return mList;
     }
 }

@@ -51,7 +51,7 @@
 
     <!--new_menti에서 입력받은 제목을 띄워주는 TextView-->
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -70,7 +70,7 @@
         android:layout_marginStart="16dp"
         android:text="2024-10-18 18:51:00"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
     <!--칸 나누는 줄-->
     <View

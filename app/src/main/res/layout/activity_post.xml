@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@id/back_button" />
 
     <TextView
-        android:id="@+id/forward"
+        android:id="@+id/forward_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -57,11 +57,12 @@
         android:text="[자랑]"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/textViewTitle"
+        app:layout_constraintRight_toLeftOf="@id/title_text"
         app:layout_constraintTop_toBottomOf="@id/divider1" />
+
     <!--new_free에서 입력받은 제목을 띄워주는 TextView-->
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -69,18 +70,37 @@
         android:text="가챠 성공"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        app:layout_constraintLeft_toRightOf="@+id/forward"
+        app:layout_constraintLeft_toRightOf="@+id/forward_text"
         app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+    <!-- 작성자명을 띄워주는 TextView -->
+    <TextView
+        android:id="@+id/mname_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="뭉가뭉가"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
+    <TextView
+        android:id="@+id/dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="|"
+        app:layout_constraintLeft_toRightOf="@id/mname_text"
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
     <!--new_free에서 입력받은 작성일을 띄워주는 TextView-->
     <TextView
         android:id="@+id/datetime_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="5dp"
         android:text="2024-10-18 18:51:00"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+        app:layout_constraintLeft_toRightOf="@id/dash"
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
     <!--칸 나누는 줄-->
     <View
@@ -104,27 +124,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider2">
 
-    <!-- 자유게시판 내용 작성 -->
+        <!-- 자유게시판 내용 작성 -->
 
-    <!-- 링크 입력과 확인 버튼을 포함하는 레이아웃 -->
+        <!-- 링크 입력과 확인 버튼을 포함하는 레이아웃 -->
 
-    <TextView
-        android:id="@+id/content_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:gravity="top"
-        android:hint="내용을 입력하세요"
-        android:inputType="textMultiLine"
-        android:maxLines="10"
+        <TextView
+            android:id="@+id/content_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="내용을 입력하세요"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
             android:minLines="10"
-        android:overScrollMode="ifContentScrolls"
-        android:padding="10dp"
-        android:scrollbars="vertical" />
-  
-            
-    </LinearLayout>
+            android:overScrollMode="ifContentScrolls"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            android:scrollbars="vertical" />
 
+
+    </LinearLayout>
 
 
     <!-- 태그 그룹 -->

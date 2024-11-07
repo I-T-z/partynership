@@ -28,7 +28,7 @@ import org.json.JSONObject;
 public class Post extends AppCompatActivity {
     Toolbar toolbar;
     ImageButton back;
-    TextView forward, title, content, datetime;
+    TextView forward, title, content, datetime, mname;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,61 +38,45 @@ public class Post extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         back = findViewById(R.id.back_button);
-        forward = findViewById(R.id.forward);
-        title = findViewById(R.id.textViewTitle);
+        forward = findViewById(R.id.forward_text);
+        title = findViewById(R.id.title_text);
         content = findViewById(R.id.content_text);
         datetime = findViewById(R.id.datetime_text);
+        mname = findViewById(R.id.mname_text);
 
         Intent intent = getIntent();
-        // intent 값 가져옴
-        String sforward = intent.getStringExtra("forward");
-        String stitle = intent.getStringExtra("title");
-        String scontent = intent.getStringExtra("content");
-        String sdatetime = intent.getStringExtra("datetime");
+        // post_code를 Intent에서 가져오기
+        String postCode = intent.getStringExtra("post_code");
+        Log.d("postcode : ", postCode);
 
-        forward.setText(sforward);
-        title.setText(stitle);
-        content.setText(scontent);
-        datetime.setText(sdatetime);
+        if (postCode != null && !postCode.isEmpty()) {
+            String url = "http://52.64.230.88:8080/partynership/get_post.jsp?post_code=" + postCode;
 
-        // RequestQueue 초기화
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        // 요청할 URL
-        //TODO: post_id 받아오는 것 구현 (임시로 1로 설정해둠)
-        String url = "http://112.175.185.136:8080/Partynership/Partynership.jsp?post_id=1";
-
-        // JSON 요청 생성
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            //서버로부터 데이터 가져와서 TextView에 설정
-                            title.setText(response.getString("title"));
-                            content.setText(response.getString("content"));
-                            datetime.setText(response.getString("created_at"));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+            RequestQueue queue = Volley.newRequestQueue(this);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                title.setText(response.getString("title"));
+                                content.setText(response.getString("content"));
+                                datetime.setText(response.getString("created_at"));
+                                forward.setText(response.getString("forward"));
+                                mname.setText(response.getString("memberName"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("PostActivity", "Error fetching data: " + error.getMessage());
-                    }
-                });
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("PostActivity", "Error fetching data: " + error.getMessage());
+                        }
+                    });
 
-        // 요청을 큐에 추가
-        queue.add(jsonObjectRequest);
-
-        Intent gitent = getIntent();
-
-        forward.setText("["+gitent.getStringExtra("forward")+"]");
-        title.setText(gitent.getStringExtra("title"));
-        content.setText(gitent.getStringExtra("content"));
-        datetime.setText(gitent.getStringExtra("datetime"));
+            queue.add(jsonObjectRequest);
+        }
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

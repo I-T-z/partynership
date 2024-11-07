@@ -28,7 +28,7 @@ public class PostParty extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         back = findViewById(R.id.back_button);
-        title = findViewById(R.id.textViewTitle);
+        title = findViewById(R.id.title_text);
         datetime = findViewById(R.id.datetime_text);
         content = findViewById(R.id.content_text);
         link = findViewById(R.id.link_text);

@@ -5,32 +5,12 @@ import android.util.Log;
 public class MyBoardListItem {
 
     private String forward;
-    private String subTitle;
+    private String title;
     private String memName;
-    private String riple;
-
-    public String getRiple() {
-        return riple;
-    }
-
-    public void setRiple(String riple) {
-        this.riple = riple;
-    }
-
-    private String freeDate;
-    private String freeTime;
-    private String likenum;
+    private String dateTime;
     @Override
     public String toString() {
-        return "제목: " + forward + ", 게시물제목: " + subTitle + ", 작성자: " + memName;
-    }
-
-    public String getLikenum() {
-        return likenum;
-    }
-
-    public void setLikenum(String likenum) {
-        this.likenum = likenum;
+        return "제목: " + forward + ", 게시물제목: " + title + ", 작성자: " + memName;
     }
 
     public String getForward() {
@@ -41,12 +21,12 @@ public class MyBoardListItem {
         this.forward = forward;
     }
 
-    public String getSubTitle() {
-        return subTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getMemName() {
@@ -57,31 +37,20 @@ public class MyBoardListItem {
         this.memName = memName;
     }
 
-    public String getFreeDate() {
-        return freeDate;
+    public String getDateTime() {
+        return dateTime;
     }
 
-    public void setFreeDate(String freeDate) {
-        this.freeDate = freeDate;
-    }
-
-    public String getFreeTime() {
-        return freeTime;
-    }
-
-    public void setFreeTime(String freeTime) {
-        this.freeTime = freeTime;
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
     //이 생성자를 통해서 값을 넘겨받고 전역변수에 저장한다.
-    MyBoardListItem(String _forward, String _subTitle, String _memName,String _riple, String _freeDate, String _freeTime,String _likenum){
+    MyBoardListItem(String _forward, String _title, String _memName, String _dateTime){
         forward = _forward;
-        subTitle = _subTitle;
+        title = _title;
         memName =_memName;
-        riple = _riple;
-        freeDate =_freeDate;
-        freeTime =_freeTime;
-        likenum = _likenum;
+        dateTime =_dateTime;
         Log.d("mytest","리스트에 데이터 삽입");
 
     }

@@ -44,10 +44,7 @@ public class MyBoardListAdapter extends BaseAdapter {
             holder.forward = convertView.findViewById(R.id.free_forward);
             holder.subTitle = convertView.findViewById(R.id.free_subTitle);
             holder.memName = convertView.findViewById(R.id.free_memName);
-            holder.riple = convertView.findViewById(R.id.free_riple);
-            holder.freeDate = convertView.findViewById(R.id.free_datetime);
-            holder.freeTime = convertView.findViewById(R.id.free_time);
-            holder.likenum = convertView.findViewById(R.id.likenum);
+            holder.freeDatetime = convertView.findViewById(R.id.free_datetime);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -56,12 +53,9 @@ public class MyBoardListAdapter extends BaseAdapter {
         MyBoardListItem mItem = mList.get(position);
         // 각 뷰에 데이터를 설정
         holder.forward.setText(mItem.getForward());             // 제목
-        holder.subTitle.setText(mItem.getSubTitle());           // 게시물 제목
+        holder.subTitle.setText(mItem.getTitle());           // 게시물 제목
         holder.memName.setText(mItem.getMemName());             // 작성자 이름
-        holder.riple.setText(mItem.getRiple());                 // 댓글 수
-        holder.freeDate.setText(mItem.getFreeDate());           // 날짜
-        holder.freeTime.setText(mItem.getFreeTime());           // 시간
-        holder.likenum.setText(mItem.getLikenum());             // 좋아요 수
+        holder.freeDatetime.setText(mItem.getDateTime());           // 날짜+시간
 
         return convertView;
     }
@@ -71,7 +65,7 @@ public class MyBoardListAdapter extends BaseAdapter {
         TextView subTitle;     // 게시물 제목
         TextView memName;      // 작성자 이름
         TextView riple;        // 댓글 수
-        TextView freeDate;     // 날짜
+        TextView freeDatetime;     // 날짜
         TextView freeTime;     // 시간
         TextView likenum;      // 좋아요 수
     }

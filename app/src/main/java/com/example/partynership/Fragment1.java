@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +59,21 @@ public class Fragment1 extends Fragment {
                 startActivity(intent);
             }
         });
+
+        //리스트 항목 클릭 시 게시글 상세 화면으로 이동
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FreeListItem selectedItem = fList.get(position); // 선택한 게시글 아이템 가져오기
+                String postCode = selectedItem.getPostCode(); // 게시글 코드 가져오기
+
+                // 상세 보기 화면으로 이동하며 post_code 전달
+                Intent intent = new Intent(getActivity(), Post.class);
+                intent.putExtra("post_code", postCode);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -81,12 +97,13 @@ public class Fragment1 extends Fragment {
                 JSONArray jsonArray = new JSONArray(jsonString.toString());
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    String postCode = jsonObject.getString("postCode");
                     String forward = jsonObject.getString("forward");
                     String title = jsonObject.getString("title");
                     String memberName = jsonObject.getString("memberName");
                     String createdAt = jsonObject.getString("freeDate");
                     // FreeListItem 생성 및 추가
-                    items.add(new FreeListItem(forward, title, memberName, createdAt));
+                    items.add(new FreeListItem(postCode, forward, title, memberName, createdAt));
                 }
             } catch (Exception e) {
                 Log.e("GetPostsTask", "Error: " + e.getMessage());
